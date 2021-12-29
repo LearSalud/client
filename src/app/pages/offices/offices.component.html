@@ -1,0 +1,28 @@
+<h1>Consultorios de {{ offices[0]?.idCentroSalud?.nombre }}</h1>
+<hr />
+
+<div class="row text-dark">
+  <div *ngFor="let office of offices" class="col-md-4 mb-5">
+    <div class="card" style="width: 18rem">
+      <div class="card-body">
+        <h2 class="card-title mb-0">Dr. {{ office.idDoctor.name }}</h2>
+        <p>
+          El consultorio esta ubicado en {{ office.indicaciones }} y el numero
+          de consultorio es {{ office.numeroConsultorio }}
+        </p>
+        <a
+          class="btn btn-warning mb-2"
+          [routerLink]="['/consultorio', office._id]"
+          >Reservar cita
+        </a>
+        <button
+          *ngIf="isAdmin"
+          class="btn btn-outline-danger"
+          (click)="deleteOffice(office._id)"
+        >
+          Eliminar consultorio
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

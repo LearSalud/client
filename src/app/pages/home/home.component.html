@@ -1,0 +1,67 @@
+<mat-sidenav-container fullscreen>
+  <mat-sidenav #sidenav mode="push">
+    <mat-toolbar color="primary">
+      <span routerLink="" class="pointer">Menú</span>
+      <span class="spacer"></span>
+      <button (click)="sidenav.toggle()" mat-icon-button>
+        <mat-icon>menu</mat-icon>
+      </button>
+    </mat-toolbar>
+
+    <mat-nav-list>
+      <div *ngIf="isUser">
+        <a routerLink="./mis-citas" (click)="sidenav.toggle()" mat-list-item>
+          <span>Mis citas</span>
+        </a>
+      </div>
+
+      <div *ngIf="isAdmin">
+        <a
+          routerLink="./crear-centro-salud"
+          (click)="sidenav.toggle()"
+          mat-list-item
+        >
+          <span>Crear centro de salud</span>
+        </a>
+        <a
+          routerLink="./crear-consultorio"
+          (click)="sidenav.toggle()"
+          mat-list-item
+        >
+          <span>Crear consultorio</span>
+        </a>
+      </div>
+
+      <div *ngIf="isDoctor">
+        <a
+          routerLink="./mis-consultorios"
+          (click)="sidenav.toggle()"
+          mat-list-item
+        >
+          <span>Mis consultorios</span>
+        </a>
+
+        <a routerLink="./mi-agenda" (click)="sidenav.toggle()" mat-list-item>
+          <span>Agenda de citas</span>
+        </a>
+      </div>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-toolbar color="primary">
+    <button (click)="sidenav.toggle()" mat-icon-button>
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span class="spacer"></span>
+    <span class="mr-2"
+      ><i class="fas fa-user"></i> {{ authService.currentUser.name }}
+    </span>
+    <button mat-raised-button color="warn" (click)="logout()">
+      Cerrar sesión
+    </button>
+  </mat-toolbar>
+
+  <div class="container mt-5">
+    <router-outlet></router-outlet>
+  </div>
+</mat-sidenav-container>

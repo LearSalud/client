@@ -1,0 +1,48 @@
+<app-card-form title="Registrar centro de salud">
+  <form (ngSubmit)="registerHealthCenter()">
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        name="nombre"
+        [(ngModel)]="healthCenter.nombre"
+        class="form-control"
+        placeholder="Escribe el nombre del centro de salud..."
+      />
+    </div>
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        name="ubicacion"
+        [(ngModel)]="healthCenter.ubicacion"
+        class="form-control"
+        placeholder="Escribe la ubicación..."
+      />
+    </div>
+    <div class="mb-3">
+      <input
+        type="number"
+        name="empieza"
+        [(ngModel)]="healthCenter.empieza"
+        class="form-control"
+        placeholder="Ingresa el horario de apertura..."
+      />
+      <small class="form-text text-muted">Formato de 24H, ejem 8</small>
+    </div>
+    <div class="mb-3">
+      <input
+        type="number"
+        name="finaliza"
+        [(ngModel)]="healthCenter.finaliza"
+        class="form-control"
+        placeholder="Ingresa el horario de cierre..."
+      />
+      <small class="form-text text-muted">Formato de 24H, ejem 18</small>
+    </div>
+    <button type="submit" class="btn btn-primary btn-block mb-2">
+      Registrar
+    </button>
+    <a [routerLink]="['/']" class="btn btn-outline-danger btn-block mb-2"
+      >Ir a los centro de salud</a
+    >
+  </form>
+</app-card-form>

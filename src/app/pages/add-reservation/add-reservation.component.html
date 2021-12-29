@@ -1,0 +1,39 @@
+<div>
+  <form class="form-inline">
+    <h1 class="text-center mr-2">
+      Escoge un horario disponible para reservar:
+    </h1>
+    <input
+      type="date"
+      name="date"
+      [ngModel]="date | date: 'yyyy-MM-dd'"
+      (change)="getSchedules()"
+      (ngModelChange)="date = $event"
+      class="form-control mb-2 mr-sm-2"
+    />
+    <h1>Tipo de reservación:</h1>
+    <select name="tipo" class="form-control mb-2 mr-sm-2" [(ngModel)]="tipo">
+      <option value="normal">Normal</option>
+      <option value="emergencia">Emergenica</option>
+    </select>
+  </form>
+</div>
+
+<div *ngIf="schedules.length > 0" class="justify-content-center">
+  <button
+    *ngFor="let s of schedules"
+    type="button"
+    class="btn btn-primary btn-lg btn-block"
+    (click)="reserve(s)"
+  >
+    {{ s.empieza }}:00 a {{ s.finaliza }}:00
+  </button>
+
+  <button
+    *ngIf="schedules.length < 0"
+    type="button"
+    class="btn btn-primary btn-lg btn-danger"
+  >
+    Lo sentimos no hay horarios disponibles para esta fecha
+  </button>
+</div>

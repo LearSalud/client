@@ -1,0 +1,45 @@
+<form class="form-inline mb-3">
+  <h1 class="mr-2">Mi agenda</h1>
+  <input
+    type="date"
+    name="date"
+    [ngModel]="date | date: 'yyyy-MM-dd'"
+    (change)="changeAgenda()"
+    (ngModelChange)="date = $event"
+    class="form-control mb-2 mr-sm-2"
+  />
+</form>
+
+<div class="row mb-2">
+  <div class="col-md-6" *ngFor="let item of agenda">
+    <div
+      class="
+        row
+        no-gutters
+        border
+        rounded
+        overflow-hidden
+        flex-md-row
+        mb-4
+        shadow-sm
+        h-md-250
+        position-relative
+      "
+    >
+      <div class="col p-4 d-flex flex-column position-static">
+        <h3 class="mb-0">{{ item.idConsultorio.idCentroSalud.nombre }}</h3>
+        <div class="mb-1">
+          {{ item.fecha | date: "fullDate":"GMT-0" }} de {{ item.empieza }}:00 a
+          {{ item.finaliza }}:00
+        </div>
+        <p class="mb-1">Tipo de cita: {{ item.tipo }}</p>
+        <p class="mb-1">Visitante: {{ item.idUser.name }}</p>
+        <p class="card-text mb-auto">
+          {{ item.idConsultorio.idCentroSalud.ubicacion }}
+          {{ item.idConsultorio.indicaciones }} N°
+          {{ item.idConsultorio.numeroConsultorio }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

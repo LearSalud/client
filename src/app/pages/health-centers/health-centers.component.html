@@ -1,0 +1,26 @@
+<h1>Centros medicos</h1>
+
+<div class="row text-dark">
+  <div *ngFor="let healthCenter of healthCenters" class="col-md-4 mb-5">
+    <div class="card" style="width: 18rem">
+      <div class="card-body">
+        <h2 class="card-title mb-0">{{ healthCenter.nombre }}</h2>
+        <h3>
+          Horario de atención de {{ healthCenter.empieza }} a
+          {{ healthCenter.finaliza }}
+        </h3>
+        <p>Ubicado en {{ healthCenter.ubicacion }}</p>
+        <a class="btn btn-warning mb-2" [routerLink]="['/', healthCenter._id]"
+          >Ver consultorios
+        </a>
+        <button
+          *ngIf="isAdmin"
+          class="btn btn-outline-danger"
+          (click)="deleteHealthCenter(healthCenter._id!)"
+        >
+          Eliminar centro medico
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

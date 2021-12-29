@@ -1,0 +1,113 @@
+<div class="row">
+  <div class="col-5 offset-2">
+    <div class="card border-primary">
+      <div class="card-body text-dark">
+        <h1 class="text-center">
+          {{ isEdit ? "Editar consultorio" : "Registrar consultorio" }}
+        </h1>
+        <hr />
+        <form (ngSubmit)="isEdit ? updateOffice() : registerOficce()">
+          <div class="input-group mb-3">
+            <select
+              class="form-control mb-2"
+              [(ngModel)]="office.idCentroSalud"
+              name="idCentroSalud"
+            >
+              <option value="0">Seleccione centro de salud</option>
+              <option *ngFor="let health of healthCenters" [value]="health._id">
+                {{ health.nombre }}
+              </option>
+            </select>
+          </div>
+          <div class="input-group mb-3">
+            <select
+              class="form-control mb-2"
+              [(ngModel)]="office.idDoctor"
+              name="idDoctor"
+            >
+              <option value="0">Seleccione el doctor</option>
+              <option *ngFor="let d of doctors" [value]="d._id">
+                {{ d.name }}
+              </option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <input
+              type="text"
+              class="form-control"
+              name="indicacciones"
+              [(ngModel)]="office.indicaciones"
+              placeholder="Escriba las indicaciones del consultorio..."
+            />
+            <small class="form-text text-muted"
+              >Ejem: 2da planta en el pasillo izquierdo...</small
+            >
+          </div>
+          <div class="mb-3">
+            <input
+              type="number"
+              class="form-control"
+              name="numeroConsultorio"
+              [(ngModel)]="office.numeroConsultorio"
+              placeholder="Escriba el numero de consultorio..."
+            />
+
+            <small class="form-text text-muted"
+              >Numero de consultorio: ejemplo 12</small
+            >
+          </div>
+
+          <button type="submit" class="btn btn-outline-primary btn-block mb-2">
+            {{ isEdit ? "Guardar cambios" : "Registrar" }}
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-5">
+    <div class="card border-primary">
+      <div class="card-body text-dark">
+        <h1 class="text-center">Agregar horarios</h1>
+        <hr />
+        <input
+          type="text"
+          [(ngModel)]="schedule.empieza"
+          name="empieza"
+          class="form-control"
+          placeholder="Hora de inicio..."
+        />
+        <small class="form-text text-muted mb-2">
+          Horario que empieza la cita: ejemplo 12
+        </small>
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="schedule.finaliza"
+          name="finaliza"
+          placeholder="Hora de finalizacion..."
+        />
+        <small class="form-text text-muted mb-2">
+          Horario que finaliza la cita: ejemplo 12
+        </small>
+        <button
+          (click)="pushSchedule()"
+          class="btn btn-outline-warning btn-block mb-2"
+        >
+          Agregar horario
+        </button>
+
+        <h2>Horarios:</h2>
+        <p>para eliminar un horario dar click al boton</p>
+        <hr />
+        <button
+          class="btn btn-outline-info btn-block mb-2"
+          *ngFor="let h of office.horarios"
+          (click)="deleteSchedule(h)"
+        >
+          {{ h.empieza }}:00 - {{ h.finaliza }}:00
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
