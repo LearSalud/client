@@ -1,4 +1,4 @@
-<app-card-form title="Registrar centro de salud">
+<app-card-form title="Registrar Clinica">
   <form (ngSubmit)="registerHealthCenter()">
     <div class="input-group mb-3">
       <input
@@ -6,7 +6,7 @@
         name="nombre"
         [(ngModel)]="healthCenter.nombre"
         class="form-control"
-        placeholder="Escribe el nombre del centro de salud..."
+        placeholder="Escribe el nombre de la Clinica..."
       />
     </div>
     <div class="input-group mb-3">
@@ -42,7 +42,7 @@
       Registrar
     </button>
     <a [routerLink]="['/']" class="btn btn-outline-danger btn-block mb-2"
-      >Ir a los centro de salud</a
+      >Ir a las Clinicas</a
     >
   </form>
 </app-card-form>

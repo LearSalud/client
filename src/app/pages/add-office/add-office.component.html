@@ -13,7 +13,7 @@
               [(ngModel)]="office.idCentroSalud"
               name="idCentroSalud"
             >
-              <option value="0">Seleccione centro de salud</option>
+              <option value="0">Seleccione la Clinica</option>
               <option *ngFor="let health of healthCenters" [value]="health._id">
                 {{ health.nombre }}
               </option>
@@ -40,7 +40,7 @@
               placeholder="Escriba las indicaciones del consultorio..."
             />
             <small class="form-text text-muted"
-              >Ejem: 2da planta en el pasillo izquierdo...</small
+              >Ejem: Tipo de atencion...</small
             >
           </div>
           <div class="mb-3">
